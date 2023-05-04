@@ -1,0 +1,21 @@
+CREATE TABLE store (id integer primary key,item text,price integer, date text,discount text);
+INSERT INTO store VALUES (1,"Shirt",25, "May 1 2023","10%");
+INSERT INTO Store VALUES (2, "Pants", 30, "May 2 2023", "5%");
+INSERT INTO Store VALUES (3, "Socks",5, "April 28 2023", "2%");
+INSERT INTO Store VALUES (4, "Shorts", 12, "May 3 2023", "7%");
+INSERT INTO Store VALUES (5, "BRAS", 8, "May 4 2023", "12%");
+INSERT INTO Store VALUES (6, "Sweater", 45, "April 27 2023", "15%");
+INSERT INTO Store VALUES (7, "Shoes", 40, "May 5 2023", "10%");
+INSERT INTO Store VALUES (8, "Ties", 18, "May 5 2023", "10%");
+INSERT INTO Store VALUES (9, "Buttons", 3, "May 6 2023", "0%");
+INSERT INTO Store VALUES (10, "Laces", 4, "May 7 2023", "9%");
+INSERT INTO Store VALUES (11, "Shoes Cream", 4, "May 8 2023", "10%");
+INSERT INTO Store VALUES (12, "Jacket", 65, "May 9 2023", "17%");
+INSERT INTO Store VALUES (13, "Skirt", 35, "May 10 2023", "10%");
+INSERT INTO Store VALUES (14, "Boots", 45,"April 25 2023", "16%");
+INSERT INTO Store VALUES (15, "Sport Items", 40, "May 13 2023", "10%");
+SELECT item "Boots" FROM Store;
+
+SELECT * FROM Store ORDER BY price;
+SELECT SUM (Price) FROM Store;
+SELECT * FROM store;
