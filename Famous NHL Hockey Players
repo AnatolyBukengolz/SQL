@@ -1,0 +1,45 @@
+Create Table Famous_Hockey_Players
+( id INTEGER PRIMARY KEY AUTOINCREMENT,
+    firstname TEXT,
+    familyname TEXT,
+    team TEXT);
+Insert into Famous_Hockey_Players values (1,'Sidney','Crosby', 'Pittsburgh Penguins');
+Insert into Famous_Hockey_Players values (2,'Wayne','Gretzky', 'Edmonton Oilers');
+Insert into Famous_Hockey_Players values (3,'Alex','Ovechkin', 'Washington Capitals');
+Insert into Famous_Hockey_Players values (4,'Steve', 'Yzerman','Detroit Red Wings'); 
+Insert into Famous_Hockey_Players values (5,'Mario ','Lemieux', 'Pittsburgh Penguins');
+Insert into Famous_Hockey_Players values (6,'Zdeno ','Chara', 'Boston Bruins');
+Insert into Famous_Hockey_Players values (7,'Paul ','Koriya', 'Colorado Avalanche');
+Insert into Famous_Hockey_Players values (8,'Mats ','Sundin', 'Toronto Maple leafs');
+Insert into Famous_Hockey_Players values (9,'Alexander ','Mogilny', 'Toronto Maple leafs');
+Insert into Famous_Hockey_Players values (10,'Pavel ','Bure', 'Florida Panthers');
+Insert into Famous_Hockey_Players values (11,'Curtis ','Joseph', 'Toronto Maple leafs');
+Insert into Famous_Hockey_Players values (12,'Thomas ','Kaberle', 'Toronto Maple leafs');
+Insert into Famous_Hockey_Players values (13,'Darcy ','Tacker', 'Toronto Maple leafs');
+
+Insert into Famous_Hockey_Players values (14,'Mitch ','Marner', 'Toronto Maple Leafs');
+Insert into Famous_Hockey_Players values (15,'Brandon ','Shannahan', 'New Jercy Devils');
+
+Create Table Famous_Hockey_Players_info
+( id INTEGER PRIMARY KEY AUTOINCREMENT,
+    age Integer,
+    wifename TEXT);
+  Insert into Famous_Hockey_Players_info values (3,37, 'Anastasia'); 
+  Insert into Famous_Hockey_Players_info values (1,35, 'Famous_Hockey_PlayersKathy');   
+  Insert into Famous_Hockey_Players_info values (2,62, 'Janet'); 
+Insert into Famous_Hockey_Players_info values (4,57, 'Lisa');
+Insert into Famous_Hockey_Players_info values (5,57, 'Natalie'); 
+Insert into Famous_Hockey_Players_info values (6,46, 'Tatiana'); 
+Insert into Famous_Hockey_Players_info values (7,48, 'Valerie'); 
+Insert into Famous_Hockey_Players_info values (8,52, 'Josephine'); 
+Insert into Famous_Hockey_Players_info values (9,54, 'Natalie'); 
+Insert into Famous_Hockey_Players_info values (10,52, 'Alina'); 
+Insert into Famous_Hockey_Players_info values (11,56, 'Nancy'); 
+Insert into Famous_Hockey_Players_info values (12,45, 'Julia'); 
+Insert into Famous_Hockey_Players_info values (13,48, 'Shannon'); 
+Insert into Famous_Hockey_Players_info values (14,26, ''); 
+Insert into Famous_Hockey_Players_info values (15,54, 'Catherine'); 
+
+  Select Famous_Hockey_Players.id,  Famous_Hockey_Players.firstname,Famous_Hockey_Players.familyname,Famous_Hockey_Players.team, Famous_Hockey_Players_info.age,Famous_Hockey_Players_info.wifename from Famous_Hockey_Players
+  Join Famous_Hockey_Players_info
+  ON Famous_Hockey_Players.id=Famous_Hockey_Players_info.id;
