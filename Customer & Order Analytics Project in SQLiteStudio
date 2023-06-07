@@ -1,0 +1,105 @@
+/*How many orders were placed in January?*/
+Select Count (JanSales.orderID)
+From JanSales
+Where length(orderID)=6 And orderID<>'Order ID';
+
+/*How many of those orders were for an iPhone*/
+Select count (JanSales.Product) iphone
+From JanSales
+Where Product='iPhone'
+And length(orderID)=6 
+And orderID<>'Order ID';
+
+/*Select the customer account numbers for all the orders that were placed in February*/
+Select distinct customers.acctnum
+From customers
+Join FebSales
+on customers.order_id=FebSales.orderID
+Where length(orderID)=6 
+And orderID<>'Order ID';
+
+/*Which product was the cheapest one sold in January, and what was the price?*/
+Select Min(JanSales.price) price,Product
+From JanSales
+Where length(orderID)=6 
+And orderID<>'Order ID';
+
+/*What is the total revenue for each product sold in January?*/
+Select (Sum (JanSales.Quantity)*JanSales.price) Revenue, JanSales.Product
+From JanSales
+Group by JanSales.Product;
+
+/*Select Count (JanSales.orderID)
+From JanSales
+Where length(orderID)=6 And orderID<>'Order ID';
+/*How many of those orders were for an iPhone*/
+Select count (JanSales.Product) iphone
+From JanSales
+Where Product='iPhone'
+And length(orderID)=6 
+And orderID<>'Order ID';
+
+/*Select the customer account numbers for all the orders that were placed in February*/
+Select distinct customers.acctnum
+From customers
+Join FebSales
+on customers.order_id=FebSales.orderID
+Where length(orderID)=6 
+And orderID<>'Order ID';
+
+/*Which product was the cheapest one sold in January, and what was the price?*/
+Select Min(JanSales.price) price,Product
+From JanSales
+Where length(orderID)=6 
+And orderID<>'Order ID';
+
+/*What is the total revenue for each product sold in January?*/
+Select (Sum (JanSales.Quantity)*JanSales.price) Revenue, JanSales.Product
+From JanSales
+Group by JanSales.Product;
+
+/*Select Count (JanSales.orderID)
+From JanSales
+Where length(orderID)=6 And orderID<>'Order ID';
+/*How many of those orders were for an iPhone*/
+Select count (JanSales.Product) iphone
+From JanSales
+Where Product='iPhone'
+And length(orderID)=6 
+And orderID<>'Order ID';
+
+/*Select the customer account numbers for all the orders that were placed in February*/
+Select distinct customers.acctnum
+From customers
+Join FebSales
+on customers.order_id=FebSales.orderID
+Where length(orderID)=6 
+And orderID<>'Order ID';
+
+/*Which product was the cheapest one sold in January, and what was the price?*/
+Select Min(JanSales.price) price,Product
+From JanSales
+Where length(orderID)=6 
+And orderID<>'Order ID'
+;
+
+
+/*What is the total revenue for each product sold in January?*/
+Select (Sum (JanSales.Quantity)*JanSales.price) Revenue, JanSales.Product
+From JanSales
+Group by JanSales.Product;
+
+/*Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?*/
+Select FebSales.Product,Febsales.Quantity, Sum(FebSales.Quantity*FebSales.price) as Revenue
+From FebSales
+Where FebSales.location='548 Lincoln St, Seattle, WA 98101';
+
+/*How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?*/
+Select Count(distinct BIT_DB.customers.acctnum),Avg(BIT_DB.FebSales.Quantity*price) avg_revenue
+From BIT_DB.FebSales
+Left Join BIT_DB.customers
+on BIT_DB.FebSales.orderID=BIT_DB.customers.order_id
+Where BIT_DB.FebSales.Quantity>2
+AND length(orderid) = 6 
+AND orderid <> 'Order ID';
+
