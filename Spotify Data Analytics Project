@@ -54,3 +54,9 @@ Order by duration_ms desc Limit 1;
 Select Artist_name,track_name,Max(duration_ms)
 From BIT_DB.Spotifydata
 ;
+
+#Then I found  What artist released the longest song? 
+Select track_name, popularity,AVG (danceability)
+From BIT_DB.Spotifydata
+Group by track_name
+Order by popularity desc Limit 10;
