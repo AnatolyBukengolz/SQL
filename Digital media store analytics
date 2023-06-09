@@ -7,3 +7,8 @@ Where s.country<>'USA';
 Select s.company,s.country
 From chinook.customers s
 Where s.country='Brazil'AND s.company IS NOT NULL ;
+
+/*Show the Employees who are Sales Agents*/
+Select emp.FirstName,emp.LastName,emp.Title
+From chinook.employees emp
+Where emp.Title='Sales Support Agent';
