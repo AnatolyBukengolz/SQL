@@ -1,0 +1,9 @@
+/*Show Customers (their full names, customer ID, and country) who are not in the US.*/
+Select s.FirstName,s.LastName, s.country
+From chinook.customers s
+Where s.country<>'USA';
+
+/*Show only the Customers from Brazil.*/
+Select s.company,s.country
+From chinook.customers s
+Where s.country='Brazil'AND s.company IS NOT NULL ;
