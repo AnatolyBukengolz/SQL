@@ -12,3 +12,12 @@ Where s.country='Brazil'AND s.company IS NOT NULL ;
 Select emp.FirstName,emp.LastName,emp.Title
 From chinook.employees emp
 Where emp.Title='Sales Support Agent';
+
+/*show the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.*/
+Select inv.invoiceID, inv.invoiceDate,emp.Title
+From chinook.invoices inv
+Join chinook.customers cust
+On inv.CustomerID=cust.CustomerID
+Left Join chinook.employees emp
+ON emp.employeeID=cust.SUpportRepID
+Where emp.title='Sales Support Agent';
