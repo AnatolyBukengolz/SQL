@@ -42,3 +42,8 @@ Join chinook.invoices  inv
 ON invit.invoiceID=inv.invoiceID
 Where inv.InvoiceDate like '2009%' ;
 
+/*Write a query that includes the purchased track name with each invoice line ID*/
+Select inv.invoicelineID,t.Name
+From chinook.invoice_items inv
+Join chinook.tracks t
+ON inv.trackid=t.trackid;
