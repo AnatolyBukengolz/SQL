@@ -80,3 +80,16 @@ Join chinook.invoice_items invit
 ON inv.InvoiceID=invit.InvoiceID
 Where emp.Title='Sales Support Agent'
 Group by emp.FirstName;
+
+/*Show which sales agent made the most dollars in sales in 2009*/
+Select Round( SUM( invit.UnitPrice*invit.Quantity),1) AS 'Total Sales',emp.Title,emp.FirstName, emp.LastName  
+From chinook.employees emp
+Join chinook.customers cust
+ON cust.SupportRepID=emp.EmployeeID
+Join chinook.invoices  inv
+ON cust.CustomerID=inv.CustomerID
+Join chinook.invoice_items invit
+ON inv.InvoiceID=invit.InvoiceID
+Where inv.InvoiceDate like '2009%' AND emp.Title='Sales Support Agent'
+Group by emp.FirstName 
+Order by 'Total Sales' desc limit 1;
