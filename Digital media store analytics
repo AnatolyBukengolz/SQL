@@ -29,3 +29,8 @@ Join chinook.customers cust
 On inv.CustomerID=cust.CustomerID
 Join chinook.employees emp
 ON emp.employeeID=cust.SupportRepID;
+
+/*How many Invoices were there in 2009?*/
+SELECT COUNT(*)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
