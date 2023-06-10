@@ -31,6 +31,14 @@ Join chinook.employees emp
 ON emp.employeeID=cust.SupportRepID;
 
 /*How many Invoices were there in 2009?*/
-SELECT COUNT(*)
-FROM chinook.Invoices
-WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+Select count (invoiceid)
+From chinook.invoices
+Where InvoiceDate like '2009%' ;
+
+/*Show what are the total sales for 2009?*/
+Select sum (invit.Unitprice*invit.Quantity) as Total_Sales_2009
+From chinook.invoice_items invit
+Join chinook.invoices  inv
+ON invit.invoiceID=inv.invoiceID
+Where inv.InvoiceDate like '2009%' ;
+
