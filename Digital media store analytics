@@ -68,3 +68,15 @@ Join chinook.media_types med
 ON tr.mediatypeid=med.mediatypeid
 Join chinook.albums alb
 ON tr.albumid=alb.albumid;
+
+/*Show the total sales made by each sales agent.*/
+Select Round( SUM( invit.UnitPrice*invit.Quantity),1) AS 'Total Sales',emp.Title,emp.FirstName, emp.LastName
+From chinook.employees emp
+Join chinook.customers cust
+ON cust.SupportRepID=emp.EmployeeID
+Join chinook.invoices  inv
+ON cust.CustomerID=inv.CustomerID
+Join chinook.invoice_items invit
+ON inv.InvoiceID=invit.InvoiceID
+Where emp.Title='Sales Support Agent'
+Group by emp.FirstName;
