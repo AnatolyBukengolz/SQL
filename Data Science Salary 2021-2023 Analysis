@@ -1,0 +1,37 @@
+--Average Salary in USD for different positions in different Regions--
+
+Select Avg (salary_in_usd) as Average_Salary_in_$USD,Region_Location,job_title--
+From [My Projects].dbo.DataScienceSalary2021_2023
+Group by Region_Location,job_title 
+Order by Region_Location, Avg (salary_in_usd) desc
+
+--Average Salary in USD for specific position or positions indicated in Where statement in different Regions--
+
+Select Avg (salary_in_usd) as Average_Salary_in_$USD,Region_Location,job_title
+From [My Projects].dbo.DataScienceSalary2021_2023
+Where job_title like'Data %'
+Group by Region_Location,job_title 
+Order by Region_Location desc, Avg (salary_in_usd) desc
+
+--Average Salary based on experience level,Year and Region--
+
+Select AVG(salary_in_usd),experience_level,work_year,Region_Location
+From MyProjects.dbo.DataScienceSalary2021_2023
+Group by experience_level,work_year,Region_Location
+Order by experience_level,work_year,Region_Location
+
+--Counts number of DataScience Positions in the World in 2021-2023 for each position broken by experience level. Sorted by Position Count in desc. order--
+
+Select  Count (job_title) as PositionCount, job_title,experience_level
+From MyProjects.dbo.DataScienceSalary2021_2023
+Group by job_title,experience_level
+Order by PositionCount desc
+
+--Counts number of DataScience Positions and displays them in percentage of the total positions in the World in 2021-2023. --
+--It's done for each position broken by experience level. Sorted by Position Count in desc. order--
+
+Select Job_title,experience_level,Count (job_title) as PositionCount,Cast((Cast((Cast (Count(job_title) as decimal(6,2))/Cast(sum(Count(job_title)) over () as decimal (6,2))*100) as decimal (6,2))) as varchar)+'%'as PositionCountPercentage
+From MyProjects.dbo.DataScienceSalary2021_2023
+Group by job_title,experience_level
+Order by PositionCount desc
+
