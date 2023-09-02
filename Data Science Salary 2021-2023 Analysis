@@ -30,8 +30,17 @@ Order by PositionCount desc
 --Counts number of DataScience Positions and displays them in percentage of the total positions in the World in 2021-2023. --
 --It's done for each position broken by experience level. Sorted by Position Count in desc. order--
 
-Select Job_title,experience_level,Count (job_title) as PositionCount,Cast((Cast((Cast (Count(job_title) as decimal(6,2))/Cast(sum(Count(job_title)) over () as decimal (6,2))*100) as decimal (6,2))) as varchar)+'%'as PositionCountPercentage
+Select Job_title,experience_level,Count (job_title) as PositionCount,Cast((Cast((Cast (Count(job_title) as decimal(6,2))/Cast(sum(Count(job_title)) over () as decimal (6,2))*100) as decimal (6,2))) as varchar)+'%'as PercentageofTotalPositions
 From MyProjects.dbo.DataScienceSalary2021_2023
 Group by job_title,experience_level
 Order by PositionCount desc
+
+--Using subqueries counts number of DataScience Positions and displays them in percentage of the total positions in the World in 2021-2023. 
+--It's done for each position broken by experience level. Sorted by Position Count in desc. order
+
+Select job_title,experience_level,Count(job_title)as PositionCount,Cast(Cast(Cast(Count(job_title) as decimal(6,2))/Cast((select Count(job_title) from MyProjects.dbo.[DataScienceSalary2021_2023 ]) as decimal(6,2))*100 as decimal (6,2))as varchar(50)) +'%'as PercentageofTotalPositions
+From MyProjects.dbo.[DataScienceSalary2021_2023 ]
+Group by job_title,experience_level
+Order by PositionCount desc
+
 
